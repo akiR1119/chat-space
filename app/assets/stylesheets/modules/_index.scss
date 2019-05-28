@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: calc(100vh - 100px);
+  .chat-side {
+    background-color: $chat-side-color;
+    width: 300px;
+    height: 100vh;
+    float: left;
+    .side-header {
+      background-color: $side-header-color;
+      height: $header-height;
+    }
+  }
+}
+
+.chat-main {
+  float: right;
+  width: calc(100% - 300px);
+  .main-header {
+    background-color: $main-header-color;
+    height: $header-height;
+  }
+  .messages {
+    background-color: $messages-color;
+    height: calc(100vh - 190px);
+  }
+  .form {
+    background-color: $form-color;
+    height: 90px;
+    padding: 20px 40px;
+  }
+
+}
