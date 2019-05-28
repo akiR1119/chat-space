@@ -10,6 +10,10 @@
     .messages 
       %p 部分テンプレートでメッセージを表示？
     .form#new-message.new-message
-      .input-box  
-        %input#message-content.input-box__text{type: "text", placeholder: "input message"}
-        %input{type: "submit"}
+      %form#new-message.new-message
+        .input-box  
+          %input#message-content.input-box__text{type: "text", placeholder: "type message"}
+          %label.image-label
+            %i.fa.fa-image
+            %input#message_image.image-label__input{type: "file"}
+        %input.new-message__submit-btn{type: "submit", value: "Send"}
