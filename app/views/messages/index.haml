@@ -1,13 +1,15 @@
 .wrapper
   .chat-side
     .side-header
-      %p.side-header__user-name
+      %p.user-name
         user_name
       %ul.user-menu
         %li
-          %i.fa.fa-edit
+          %a{href: "#"}
+            %i.user-menu__edit-icon.fa.fa-edit
         %li
-          %i.fa.fa-cog
+          %a{href: "#"}
+            %i.user-menu__cog-icon.fa.fa-cog
     .groups
       %ul
         %li
@@ -29,21 +31,28 @@
           Member:
           %li.member-list__member member1
           %li.member-list__member member2
-      %a{href: "#"}
-        .main-header__edit-btn Edit
+      %a.group-edit-btn{href: "#"}
+        .gtoup-edit-btn__div Edit
     .messages
       .message
-        .message__user-name
-          %p name
-          %p date
-        .message__message-text
+        .message-meta-data
+          %p.message-meta-data__name name
+          %p.message-meta-data__date date
+        .message-text
           %p message
+      .message
+        .message-meta-data
+          %p.message-meta-data__name name
+          %p.message-meta-data__date date
+        .message-text
+          %p message
+
     .form
       %form#new-message.new-message
         .input-box  
           %input#message-content.input-box__text{type: "text", placeholder: "type a message"}
           %label.image-label
-            %i.fa.fa-image
+            %i.image-label__file-icon.fa.fa-image
             %input#message_image.image-label__input{type: "file"}
-            //^form_withメソッド使用時にrubyに書き換え
+            //^バックエンド実装時にrubyに書き換え？
         %input.new-message__submit-btn{type: "submit", value: "Send"}
