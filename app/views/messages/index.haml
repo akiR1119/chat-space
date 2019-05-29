@@ -1,19 +1,49 @@
 .wrapper
   .chat-side
     .side-header
-      %p.side-header__user-name user_name
+      %p.side-header__user-name
+        user_name
+      %ul.user-menu
+        %li
+          %i.fa.fa-edit
+        %li
+          %i.fa.fa-cog
     .groups
-      groups
+      %ul
+        %li
+          %a{href: "#"}
+            .group
+              %p.group__name group-name
+              %p.group__latest-message message is here!
+        %li
+          %a{href: "#"}
+            .group
+              %p.group__name group2-name
+              %p.group__latest-message hello
+
   .chat-main
     .main-header 
-      %p room_name
-    .messages 
-      %p 部分テンプレートでメッセージを表示？
-    .form#new-message.new-message
+      .current-group
+        %h2.current-group__name group-name 
+        %ul.member-list
+          Member:
+          %li.member-list__member member1
+          %li.member-list__member member2
+      %a{href: "#"}
+        .main-header__edit-btn Edit
+    .messages
+      .message
+        .message__user-name
+          %p name
+          %p date
+        .message__message-text
+          %p message
+    .form
       %form#new-message.new-message
         .input-box  
-          %input#message-content.input-box__text{type: "text", placeholder: "type message"}
+          %input#message-content.input-box__text{type: "text", placeholder: "type a message"}
           %label.image-label
             %i.fa.fa-image
             %input#message_image.image-label__input{type: "file"}
+            //^form_withメソッド使用時にrubyに書き換え
         %input.new-message__submit-btn{type: "submit", value: "Send"}
