@@ -5,20 +5,20 @@
         user_name
       %ul.user-menu
         %li
-          %a{href: "#"}
+          = link_to '#' do
             %i.user-menu__edit-icon.fa.fa-edit
         %li
-          %a{href: "#"}
+          = link_to '#' do
             %i.user-menu__cog-icon.fa.fa-cog
     .groups
       %ul
         %li
-          %a{href: "#"}
+          = link_to '#' do
             .group
               %p.group__name group-name
               %p.group__latest-message message is here!
         %li
-          %a{href: "#"}
+          = link_to '#' do
             .group
               %p.group__name group2-name
               %p.group__latest-message hello
@@ -31,7 +31,7 @@
           Member:
           %li.member-list__member member1
           %li.member-list__member member2
-      %a.group-edit-btn{href: "#"}
+      = link_to '#', class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
     .messages
       .message
