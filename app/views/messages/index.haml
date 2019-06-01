@@ -4,12 +4,13 @@
   .chat-main
     .main-header 
       .current-group
-        %h2.current-group__name group-name 
+        %h2.current-group__name
+          = Group.find(params[:group_id])[:name]
         %ul.member-list
           Member:
           %li.member-list__member member1
           %li.member-list__member member2
-      -# = link_to edit_group_path, class: "group-edit-btn" do
+      = link_to edit_group_path(current_user.id), class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
     .messages
       .message
