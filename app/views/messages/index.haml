@@ -7,9 +7,13 @@
         %h2.current-group__name
           = Group.find(params[:group_id])[:name]
         %ul.member-list
-          Member:
-          %li.member-list__member member1
-          %li.member-list__member member2
+          Member : 
+          - GroupUser.where(group_id: params[:group_id]).each do |groupuser|
+            %li.member-list__member
+              = User.find(groupuser[:user_id])[:name]
+          -# - GroupUser.where(group_id: params[:group_id]).each do |user_id|
+          -#   %li.member-list__member
+          -#     = User.find(user_id)[:name]
       = link_to edit_group_path(current_user.id), class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
     .messages
