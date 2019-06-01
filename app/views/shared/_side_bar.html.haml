@@ -11,14 +11,12 @@
           %i.user-menu__cog-icon.fa.fa-cog
   .groups
     %ul
-      %li
-        = link_to '#' do
-          .group
-            %p.group__name group-name
-            %p.group__latest-message message is here!
-      %li
-        = link_to '#' do
-          .group
-            %p.group__name group2-name
-            %p.group__latest-message hello
+      -current_user.groups.each do |group|
+        %li
+          = link_to group_messages_path(group) do
+            .group
+              %p.group__name 
+                = group.name
+              %p.group__latest-message
+                no message
 
