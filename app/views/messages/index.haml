@@ -4,7 +4,8 @@
   .chat-main
     .main-header 
       .current-group
-        %h2.current-group__name group-name 
+        %h2.current-group__name
+          = Group.find(params[:group_id])[:name]
         %ul.member-list
           Member:
           %li.member-list__member member1
