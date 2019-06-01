@@ -1,7 +1,7 @@
 .chat-side
   .side-header
     %p.user-name
-      user_name
+      = User.find(current_user.id)[:name]
     %ul.user-menu
       %li
         = link_to new_group_path do
