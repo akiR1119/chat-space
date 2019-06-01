@@ -5,10 +5,10 @@
         user_name
       %ul.user-menu
         %li
-          = link_to '#' do
+          = link_to new_group_path do
             %i.user-menu__edit-icon.fa.fa-edit
         %li
-          = link_to '#' do
+          -# = link_to new_user_path(current_user.id) do
             %i.user-menu__cog-icon.fa.fa-cog
     .groups
       %ul
@@ -31,7 +31,7 @@
           Member:
           %li.member-list__member member1
           %li.member-list__member member2
-      = link_to '#', class: "group-edit-btn" do
+      -# = link_to edit_group_path, class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
     .messages
       .message
