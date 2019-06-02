@@ -148,7 +148,6 @@
 }
 
 .new-message {
-  display: flex;
 
   &__submit-btn {
     width: 100px;
@@ -167,7 +166,6 @@
 
   &__text {
     padding: 0 10px;
-    width: 100%;
     height: 50px;
     width: 100%;
     border: none;

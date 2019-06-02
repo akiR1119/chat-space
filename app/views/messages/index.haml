@@ -17,24 +17,25 @@
       = link_to edit_group_path(current_user.id), class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
     .messages
-      .message
-        .message-meta-data
-          %p.message-meta-data__name name
-          %p.message-meta-data__date date
-        .message-text
-          %p message
-      .message
-        .message-meta-data
-          %p.message-meta-data__name name
-          %p.message-meta-data__date date
-        .message-text
-          %p message
+      = render @messages
+      -# .message
+      -#   .message-meta-data
+      -#     %p.message-meta-data__name name
+      -#     %p.message-meta-data__date date
+      -#   .message-text
+      -#     %p message
+      -# .message
+      -#   .message-meta-data
+      -#     %p.message-meta-data__name name
+      -#     %p.message-meta-data__date date
+      -#   .message-text
+      -#     %p message
 
-    .form
-      %form#new-message.new-message
-        .input-box  
-          %input#message-content.input-box__text{type: "text", placeholder: "type a message"}
-          %label.image-label
+    .form#new-message.new-message
+      = form_for [@group,@message], style: "display: flex" do |f|
+        .input-box
+          = f.text_field :content, placeholder: "type a message", class: "input-box__text", id: "message-content", value: nil
+          = f.label :image, class: "image-label" do
             %i.image-label__file-icon.fa.fa-image
-            %input#message_image.image-label__input{type: "file"}
-        %input.new-message__submit-btn{type: "submit", value: "Send"}
+              = f.file_field :image, class: "image-label__input", id: "message_image"
+        = f.submit 'Send', class: "new-message__submit-btn"
