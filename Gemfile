@@ -63,3 +63,7 @@ gem 'font-awesome-rails'
 
 #devise
 gem 'devise'
+
+#画像アップロード機能関連
+gem 'carrierwave'
+gem 'mini_magick'
