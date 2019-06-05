@@ -27,6 +27,7 @@ $(function() {
     // console.log(new FormData(this));
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    $(".new-message__submit-btn").removeAttr('data-disable-with');
     $.ajax({
       type: 'POST',
       url: url,
