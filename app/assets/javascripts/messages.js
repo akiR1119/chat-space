@@ -50,7 +50,6 @@ $(function() {
     .done(function(message) {
       appendMessage(message);
       scrollToNewMessage();
-      // $('input-box__tex')[0].reset();
       $('form.new_message').get(0).reset();
     })
     .fail(function() {
