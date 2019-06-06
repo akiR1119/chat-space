@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 .wrapper {
   height: 100%;
 }
@@ -64,6 +68,7 @@
 .chat-main {
   float: right;
   width: calc(100vw - 300px);
+  height: 100%;
 
   > * {
     padding-left: 40px;
@@ -77,6 +82,10 @@
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px $main-header-bottom-color;
+}
+
+.main-header, .form {
+  width: calc(100vw - 300px);
 }
 
 .current-group {
@@ -109,6 +118,8 @@
   background-color: $messages-color;
   height: calc(100vh - 190px);
   padding-top: 46px;
+  padding-bottom: 46px;
+  overflow: scroll;
 }
 
 .message {
@@ -145,6 +156,7 @@
   height: 90px;
   padding-top: 20px;
   padding-bottom: 20px;
+  bottom: 0px;
 }
 
 .new-message {

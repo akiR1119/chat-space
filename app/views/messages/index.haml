@@ -11,25 +11,10 @@
           - GroupUser.where(group_id: params[:group_id]).each do |groupuser|
             %li.member-list__member
               = User.find(groupuser[:user_id])[:name]
-          -# - GroupUser.where(group_id: params[:group_id]).each do |user_id|
-          -#   %li.member-list__member
-          -#     = User.find(user_id)[:name]
       = link_to edit_group_path(current_user.id), class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
     .messages
       = render @messages
-      -# .message
-      -#   .message-meta-data
-      -#     %p.message-meta-data__name name
-      -#     %p.message-meta-data__date date
-      -#   .message-text
-      -#     %p message
-      -# .message
-      -#   .message-meta-data
-      -#     %p.message-meta-data__name name
-      -#     %p.message-meta-data__date date
-      -#   .message-text
-      -#     %p message
 
     .form#new-message.new-message
       = form_for [@group,@message], style: "display: flex" do |f|
