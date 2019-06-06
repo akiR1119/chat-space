@@ -3,6 +3,7 @@ $(function() {
 
 
   function appendMessage(message) {
+    // console.log(message);
     var html = `<div class='message'>
                   <div class='message-meta-data'>
                     <div class='message-meta-data__name'>
@@ -19,6 +20,19 @@ $(function() {
                   </div>
                 </div>`
       message_list.append(html);
+  }
+
+  function scrollToNewMessage() {
+    var speed = 100;
+    // var targetTop = $(target).offset().top;
+    console.log("scrolling");
+    var targetTop = $('.messages').get(0).scrollHeight;
+    console.log($('.messages'));
+    console.log($('.messages').get(0));
+    $(".messages").animate({
+      scrollTop: targetTop,
+      speed
+    })
   }
 
   $("#new_message").on('submit', function(e) {
@@ -38,7 +52,8 @@ $(function() {
     })
     .done(function(message) {
       appendMessage(message);
-      console.log("メッセージ送信完了")
+      console.log("メッセージ送信完了");
+      scrollToNewMessage();
     })
     .fail(function() {
       alert('メッセージ投稿に失敗しました')
