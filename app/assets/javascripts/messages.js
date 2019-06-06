@@ -2,6 +2,10 @@ $(function() {
   var message_list = $(".messages");
 
   function appendMessage(message) {
+    var img = "";
+    if (message.img != null) {
+      img = `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }">`
+    };
     var html = `<div class='message'>
                   <div class='message-meta-data'>
                     <div class='message-meta-data__name'>
@@ -15,7 +19,7 @@ $(function() {
                     <p class='message-text__content'>
                       ${ message.content }
                     </p>
-                    <img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }">
+                    ${ img }
                   </div>
                 </div>`
       message_list.append(html);
