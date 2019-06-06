@@ -46,8 +46,8 @@ $(function() {
     .done(function(message) {
       appendMessage(message);
       scrollToNewMessage();
-      $('.input-box__text').val("");
-      $('.image-label__input').val("");
+      // $('input-box__tex')[0].reset();
+      $('form.new_message').get(0).reset();
     })
     .fail(function() {
       alert('メッセージ投稿に失敗しました')
