@@ -3,7 +3,7 @@ $(function() {
 
   function appendMessage(message) {
     var img = "";
-    message.img != null ? img = `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }">` : img = "";
+    message.img ? img = `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }">` : img = "";
     var html = `<div class='message'>
                   <div class='message-meta-data'>
                     <div class='message-meta-data__name'>
