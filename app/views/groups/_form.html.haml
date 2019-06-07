@@ -15,7 +15,7 @@
       = f.label "チャットメンバーを追加", class: "chat-group-form__label", for: "chat_group_チャットメンバーを追加"
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        = f.text_field :name , placeholder: '追加したいユーザー名を入力してください', class: 'chat-group-form__input', id: 'user-search-field', value: ""
+        = f.text_field "search-box" , placeholder: '追加したいユーザー名を入力してください', class: 'chat-group-form__input', id: 'user-search-field', value: ""
       #user-search-result
     / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
     /
