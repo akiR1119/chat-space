@@ -1,7 +1,7 @@
 $(function() {
   var preInput = "";
 
-  function appendUser(user) {
+  function appendSearchedUser(user) {
     // var delButton = user.id != current_user_id ?
     console.log("appending username")
     var userSearchResult = $("#user-search-result")
@@ -12,8 +12,13 @@ $(function() {
     userSearchResult.append(html);
   }
 
+  function addUserToGroup(userId) {
+    
+  }
+
   $('#user-search-field').on("keyup", function() {
     // console.log($('#user-search-field').val());
+    console.log("hakka")
     //入力内容が変化している場合のみサーチを実行する。
     var input = $('#user-search-field').val();
     if (input !== preInput) {
@@ -29,7 +34,7 @@ $(function() {
         console.log("ajax done");
         if (users.length !== 0) {
           users.forEach(function(user) {
-            appendUser(user);
+            appendSearchedUser(user);
           })
         }
       })
@@ -38,5 +43,13 @@ $(function() {
       })
       preInput = input
     }
+  })
+
+  $(document).on('click','.chat-group-user__btn', function() {
+    console.log("click~");
+    console.log($(this).attr('data-user-id'));
+    var userIdToAdd = $(this).attr('id');
+    addUserToGroup(userIdToAdd);
+    //どのユーザーが押されたか？を把握し、次にそのユーザーをメンバーに追加する処理（paramsとhtml）。
   })
 })

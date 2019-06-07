@@ -19,6 +19,8 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    # binding.pry
+    @users = @group.users
   end
 
   def update
