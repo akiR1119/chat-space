@@ -8,5 +8,10 @@ $(function() {
       data: {keyword: input},
       dataType: 'json'
     })
+    .done(function(users) {
+      console.log(users);
+    })
+    .fail(function() {
+    })
   })
 })
