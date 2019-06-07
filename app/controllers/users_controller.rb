@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.where(name: name)
-
+    @users = User.where('name Like(?)', "%#{params[:keyword]}%")
   end
 
   def edit
