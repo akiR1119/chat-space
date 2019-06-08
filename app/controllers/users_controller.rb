@@ -2,9 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @searched_users = User.where('name Like(?)', "%#{params[:keyword]}%")
-    # binding.pry
     respond_to do |format|
-      # format.html
       format.json { render 'index', formats: 'json', handlers: 'jbuilder' }
     end
   end

@@ -11,7 +11,7 @@
           - GroupUser.where(group_id: params[:group_id]).each do |groupuser|
             %li.member-list__member
               = User.find(groupuser[:user_id])[:name]
-      = link_to edit_group_path(current_user.id), class: "group-edit-btn" do
+      = link_to edit_group_path(params[:group_id]), class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
     .messages
       = render @messages

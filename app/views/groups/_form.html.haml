@@ -36,12 +36,17 @@
         .chat-group-user.clearfix{id: "current_user", data: {user: {id:  "#{current_user.id}"}}}
           %p
             = current_user.name
-        - users.each do |user|
-          - if user[:id] != current_user.id
-            .chat-group-user.clearfix{id: "chat-group-user-#{user[:id]}", data: {user: {id: user[:id]}}}
-              %p.chat-group-user__name
-                = user[:name]
-              .chat-group-user__btn.chat-group-user__btn--remove{data: {user: {id: user[:id]}}} 削除
+          %input{name: "group[user_ids][]", type: "hidden", value: current_user.id, id: "group_user_ids"}
+          -# = f.hidden_field :user_ids, value: current_user.id
+        - if users
+          - users.each do |user|
+            - if user[:id] != current_user.id
+              .chat-group-user.clearfix{id: "chat-group-user-#{user[:id]}", data: {user: {id: user[:id]}}}
+                %p.chat-group-user__name
+                  = user[:name]
+                %input{name: "group[user_ids][]", type: "hidden", value: user[:id]}
+                -# = f.hidden_field :'user_ids[]', value: user[:id]
+                .chat-group-user__btn.chat-group-user__btn--remove{data: {user: {id: user[:id]}}} 削除
       -#   .chat-group-user.clearfix#chat-group-user-22
       -#     = f.hidden_field 
       / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
