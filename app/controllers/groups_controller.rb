@@ -11,7 +11,6 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    # binding.pry
     if @group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
@@ -20,14 +19,12 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    # binding.pry
     @users = @group.users
   end
 
   def update
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'グループを編集しました'
-      # binding.pry
     else
       render :edit
     end
