@@ -6,6 +6,14 @@ html, body {
   height: 100%;
 }
 
+form {
+  display: block;
+}
+
+form.new_message {
+  display: flex;
+}
+
 .wrapper {
   height: 100%;
 }
