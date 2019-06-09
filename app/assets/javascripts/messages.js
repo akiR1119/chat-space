@@ -53,4 +53,21 @@ $(function() {
       alert('メッセージ投稿に失敗しました')
     })
   })
+
+  var reloadMessages = function() {
+    last_message_id = $('.message:last').attr('data-message-id');
+    groupId = $('.messages').attr('data-group-id');
+    $.ajax({
+      type: 'GET',
+      url: `/groups/${groupId}/api/messages`,
+      data: {id: last_message_id},
+      dataType: 'json'
+    })
+    .done(function(messages) {
+      console.log('success');
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  }
 })
