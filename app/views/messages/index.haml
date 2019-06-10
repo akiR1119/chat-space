@@ -13,7 +13,7 @@
               = User.find(groupuser[:user_id])[:name]
       = link_to edit_group_path(params[:group_id]), class: "group-edit-btn" do
         .gtoup-edit-btn__div Edit
-    .messages
+    .messages{data: {group: {id: params[:group_id]}}}
       = render @messages
 
     .form#new-message.new-message

@@ -3,7 +3,7 @@ $(function() {
 
   function appendMessage(message) {
     var img = message.img ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }">` : "";
-    var html = `<div class='message'>
+    var html = `<div class='message' data-message-id='${ message.id }'>
                   <div class='message-meta-data'>
                     <div class='message-meta-data__name'>
                       ${ message.username }
@@ -19,7 +19,7 @@ $(function() {
                     ${ img }
                   </div>
                 </div>`
-      message_list.append(html);
+        message_list.append(html);
   }
 
   function scrollToNewMessage() {
@@ -29,6 +29,25 @@ $(function() {
       scrollTop: targetTop,
       speed
     })
+  }
+
+  var buildMessageHTML = function(message) {
+    var content = message.content ? `<p class='message-text__content'>${ message.content }</p>` : "";
+    var img = message.image ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.image }"></img>` : "";
+    var html = `<div class='message' data-message-id='${ message.id }'>
+    <div class='message-meta-data'>
+      <div class='message-meta-data__name'>
+        ${ message.user_name }
+      </div>
+      <div class='message-meta-data__date'>
+        ${ message.created_at }
+      </div>
+    </div>
+    <div class='message-text'>
+        ${ content }
+        ${ img }
+    </div>`
+    message_list.append(html);
   }
 
   $("#new_message").on('submit', function(e) {
@@ -53,4 +72,34 @@ $(function() {
       alert('メッセージ投稿に失敗しました')
     })
   })
+
+  var groupMessages = function() {
+    var urlCondition = new RegExp("groups/" + ".+" + "/messages");
+    if(location.pathname.match(urlCondition)) {
+      reloadMessages();
+    }
+  }
+
+  var reloadMessages = function() {
+    last_message_id = $('.message:last').attr('data-message-id');
+    groupId = $('.messages').attr('data-group-id');
+    $.ajax({
+      type: 'GET',
+      url: `/groups/${groupId}/api/messages`,
+      data: {id: last_message_id},
+      dataType: 'json'
+    })
+    .done(function(messages) {
+      if(messages) {
+        messages.forEach(function(message){
+          buildMessageHTML(message);
+        });  
+      }
+      scrollToNewMessage();
+    })
+    .fail(function() {
+    });
+  }
+
+  setInterval(groupMessages, 5000);
 })
