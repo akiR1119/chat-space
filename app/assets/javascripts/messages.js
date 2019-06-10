@@ -33,7 +33,7 @@ $(function() {
 
   var buildMessageHTML = function(message) {
     var content = message.content ? `<p class='message-text__content'>${ message.content }</p>` : "";
-    var img = message.img ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.image }"></img>` : "";
+    var img = message.image ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.image }"></img>` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
     <div class='message-meta-data'>
       <div class='message-meta-data__name'>
