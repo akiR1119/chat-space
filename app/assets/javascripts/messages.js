@@ -75,6 +75,13 @@ $(function() {
     })
   })
 
+  var groupMessages = function() {
+    var urlCondition = new RegExp("groups/" + ".+" + "/messages");
+    if(location.pathname.match(urlCondition)) {
+      reloadMessages();
+    }
+  }
+
   var reloadMessages = function() {
     last_message_id = $('.message:last').attr('data-message-id');
     groupId = $('.messages').attr('data-group-id');
@@ -102,6 +109,5 @@ $(function() {
     });
   }
 
-
-  setInterval(reloadMessages, 5000);
+  setInterval(groupMessages, 5000);
 })
