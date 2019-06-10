@@ -3,7 +3,7 @@ $(function() {
 
   function appendMessage(message) {
     var img = message.img ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }">` : "";
-    var html = `<div class='message'>
+    var html = `<div class='message' data-message-id='${ message.id }'>
                   <div class='message-meta-data'>
                     <div class='message-meta-data__name'>
                       ${ message.username }
@@ -19,7 +19,7 @@ $(function() {
                     ${ img }
                   </div>
                 </div>`
-      return html
+        message_list.append(html);
   }
 
   function scrollToNewMessage() {
@@ -32,19 +32,22 @@ $(function() {
   }
 
   var buildMessageHTML = function(message) {
+    console.log("buildMessageHTML");
+    console.log(message);
     var content = message.content ? `<p class='message-text__content'>${ message.content }</p>` : "";
-    var img = message.img ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }"></img>` : "";
-    var html = `<div class='message'>
+    var img = message.img ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.image }"></img>` : "";
+    var html = `<div class='message' data-message-id='${ message.id }'>
     <div class='message-meta-data'>
       <div class='message-meta-data__name'>
-        ${ message.username }
+        ${ message.user_name }
       </div>
       <div class='message-meta-data__date'>
-        ${ message.date }
+        ${ message.created_at }
       </div>
-      <div class='message-text'>
-         ${ content }
-         ${ img }
+    </div>
+    <div class='message-text'>
+        ${ content }
+        ${ img }
     </div>`
     message_list.append(html);
   }
@@ -75,6 +78,9 @@ $(function() {
   var reloadMessages = function() {
     last_message_id = $('.message:last').attr('data-message-id');
     groupId = $('.messages').attr('data-group-id');
+    console.log("groupid")
+    console.log(groupId)
+    console.log(last_message_id)
     $.ajax({
       type: 'GET',
       url: `/groups/${groupId}/api/messages`,
@@ -83,16 +89,27 @@ $(function() {
     })
     .done(function(messages) {
       console.log('success');
+      console.log(messages);
+      if(messages) {
+        messages.forEach(function(message){
+          buildMessageHTML(message);
+        });  
+      }
       var insertHTML = "";
-      messages.forEach(function(message) {
-        insertHTML += buildMessageHTML(message);
-      })
-      message_list.append(insertHTML);
+      // insertHTML = jQuery.map(messages, buildMessageHTML(this))
+      // messages.forEach(function(message) {
+      //   //insertHTMLの使い方がおかしい
+      //   insertHTML = insertHTML + buildMessageHTML(message);
+      // })
+      console.log("insertHTML")
+      console.log(insertHTML);
+      // message_list.append(insertHTML);
     })
     .fail(function() {
       console.log('error');
     });
   }
+
 
   setInterval(reloadMessages, 5000);
 })
