@@ -32,8 +32,6 @@ $(function() {
   }
 
   var buildMessageHTML = function(message) {
-    console.log("buildMessageHTML");
-    console.log(message);
     var content = message.content ? `<p class='message-text__content'>${ message.content }</p>` : "";
     var img = message.img ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.image }"></img>` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
@@ -85,9 +83,6 @@ $(function() {
   var reloadMessages = function() {
     last_message_id = $('.message:last').attr('data-message-id');
     groupId = $('.messages').attr('data-group-id');
-    console.log("groupid")
-    console.log(groupId)
-    console.log(last_message_id)
     $.ajax({
       type: 'GET',
       url: `/groups/${groupId}/api/messages`,
@@ -95,8 +90,6 @@ $(function() {
       dataType: 'json'
     })
     .done(function(messages) {
-      console.log('success');
-      console.log(messages);
       if(messages) {
         messages.forEach(function(message){
           buildMessageHTML(message);
@@ -105,7 +98,6 @@ $(function() {
       scrollToNewMessage();
     })
     .fail(function() {
-      console.log('error');
     });
   }
 
