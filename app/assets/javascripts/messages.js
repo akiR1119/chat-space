@@ -95,15 +95,7 @@ $(function() {
           buildMessageHTML(message);
         });  
       }
-      var insertHTML = "";
-      // insertHTML = jQuery.map(messages, buildMessageHTML(this))
-      // messages.forEach(function(message) {
-      //   //insertHTMLの使い方がおかしい
-      //   insertHTML = insertHTML + buildMessageHTML(message);
-      // })
-      console.log("insertHTML")
-      console.log(insertHTML);
-      // message_list.append(insertHTML);
+      scrollToNewMessage();
     })
     .fail(function() {
       console.log('error');
