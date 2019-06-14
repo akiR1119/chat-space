@@ -21,3 +21,6 @@ public/uploads/*
 
 #ソース置き場
 junksources/*
+
+#パスワードなどを隔離
+config/secrets.yml
