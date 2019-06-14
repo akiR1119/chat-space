@@ -19,7 +19,7 @@
     .form#new-message.new-message
       = form_for [@group,@message], style: "display: flex" do |f|
         .input-box
-          = f.text_field :content, placeholder: "type a message", class: "input-box__text", id: "message-content", value: nil
+          = f.text_field :content, placeholder: "type a message!", class: "input-box__text", id: "message-content", value: nil
           = f.label :image, class: "image-label" do
             %i.image-label__file-icon.fa.fa-image
               = f.file_field :image, class: "image-label__input", id: "message_image"
