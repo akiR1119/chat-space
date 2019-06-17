@@ -4,7 +4,7 @@ $(function() {
   function appendMessage(message) {
     console.log("appendMessage")
     console.log(message)
-    var img = message.img ? `<img class='lower-message__image' src="${ message.img["url"] }">` : "";
+    var img = message.img["url"] ? `<img class='lower-message__image' src="${ message.img["url"] }">` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
                   <div class='message-meta-data'>
                     <div class='message-meta-data__name'>
@@ -35,7 +35,7 @@ $(function() {
 
   var buildMessageHTML = function(message) {
     var content = message.content ? `<p class='message-text__content'>${ message.content }</p>` : "";
-    var img = message.img ? `<img class='lower-message__image' src="${ message.img["url"] }"></img>` : "";
+    var img = message.img["url"] ? `<img class='lower-message__image' src="${ message.img["url"] }"></img>` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
     <div class='message-meta-data'>
       <div class='message-meta-data__name'>
