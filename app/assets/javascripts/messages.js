@@ -4,7 +4,7 @@ $(function() {
   function appendMessage(message) {
     console.log("appendMessage")
     console.log(message)
-    console.log(message.img["url"])
+    console.log(message.img["url"] + "<-null?")
     var img = message.img["url"] ? `<img class='lower-message__image' src="${ message.img["url"] }">` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
                   <div class='message-meta-data'>
