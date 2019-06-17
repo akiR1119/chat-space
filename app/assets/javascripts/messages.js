@@ -2,7 +2,7 @@ $(function() {
   var message_list = $(".messages");
 
   function appendMessage(message) {
-    var img = message.img ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.img }">` : "";
+    var img = message.img ? `<img class='lower-message__image' src="${ message.img["url"] }">` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
                   <div class='message-meta-data'>
                     <div class='message-meta-data__name'>
@@ -16,7 +16,7 @@ $(function() {
                     <p class='message-text__content'>
                       ${ message.content }
                     </p>
-                    ${ img }
+                     ${ img }
                   </div>
                 </div>`
         message_list.append(html);
@@ -33,7 +33,7 @@ $(function() {
 
   var buildMessageHTML = function(message) {
     var content = message.content ? `<p class='message-text__content'>${ message.content }</p>` : "";
-    var img = message.image ? `<img class='lower-message__image' src="/uploads/message/image/${ message.id }/${ message.image }"></img>` : "";
+    var img = message.img ? `<img class='lower-message__image' src="${ message.img["url"] }"></img>` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
     <div class='message-meta-data'>
       <div class='message-meta-data__name'>
@@ -101,5 +101,5 @@ $(function() {
     });
   }
 
-  setInterval(groupMessages, 5000);
+  setInterval(groupMessages, 5000000000000000000000);
 })
