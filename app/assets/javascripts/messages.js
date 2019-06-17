@@ -2,6 +2,8 @@ $(function() {
   var message_list = $(".messages");
 
   function appendMessage(message) {
+    console.log("appendMessage")
+    console.log(message)
     var img = message.img ? `<img class='lower-message__image' src="${ message.img["url"] }">` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
                   <div class='message-meta-data'>
