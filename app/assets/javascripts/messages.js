@@ -2,9 +2,6 @@ $(function() {
   var message_list = $(".messages");
 
   function appendMessage(message) {
-    console.log("appendMessage")
-    // console.log(message)
-    console.log(message.img["url"] + "<-null?")
     var img = message.img["url"] ? `<img class='lower-message__image' src="${ message.img["url"] }">` : "";
     var html = `<div class='message' data-message-id='${ message.id }'>
                   <div class='message-meta-data'>
@@ -55,7 +52,6 @@ $(function() {
 
   $("#new_message").on('submit', function(e) {
     e.preventDefault();
-    console.log("newmessage")
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $(".new-message__submit-btn").removeAttr('data-disable-with');
@@ -105,5 +101,5 @@ $(function() {
     });
   }
 
-  setInterval(groupMessages, 5000000000000000000000);
+  setInterval(groupMessages, 5000);
 })
